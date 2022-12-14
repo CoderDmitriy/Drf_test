@@ -11,10 +11,6 @@ class EntityViewSet(viewsets.ModelViewSet):
     )
 
     def perform_create(self, serializer):
-        value = self.request.data.get('data[value]')
-        if not isinstance(value, int):
-            value = None
         serializer.save(
-            modified_by=self.request.user,
-            value=value
+            modified_by=self.request.user
         )
